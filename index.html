@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Birthday Letter</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d1117;
+            color: #58a6ff;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        /* TERMINAL */
+        #terminal {
+            white-space: pre-wrap;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* blinking cursor */
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* BUTTON */
+        button {
+            margin-top: 20px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            width: 100%;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* LETTER CARD */
+        #letter {
+            margin-top: 24px;
+            background: #161b22;
+            padding: 20px;
+            border-radius: 14px;
+            color: white;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* TITLE */
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+            color: #58a6ff;
+        }
+
+        /* MEMORY BOX */
+        .memory {
+            margin-top: 16px;
+            padding-left: 12px;
+            border-left: 3px solid #58a6ff;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* SMALL SCREENS TWEAK */
+        @media (max-width: 480px) {
+            #terminal {
+                font-size: 0.95rem;
+            }
+
+            #letter {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="terminal"></div>
+
+    <button id="openBtn" style="display:none;">
+        Ouvrir ma lettre ❤️
+    </button>
+
+    <div id="letter" style="display:none;">
+
+        <h1>Joyeux Anniversaire Shelina ❤️</h1>
+
+        <p>
+            Aujourd'hui est un jour spécial, car c'est l'anniversaire de ma petite princesse adorée et je voulais juste
+            te faire quelque chose d'un peu unique.
+        </p>
+
+        <p>
+            Merci d'être une personne si importante dans ma vie.
+            Pour toutes nos conversations, nos fous rires, et tous ces moments qui rendent tout tellement mieux.
+        </p>
+
+        <p>
+            Même avec la distance entre nous, tu comptes énormément pour moi.
+        </p>
+
+        <p>
+            J'espère que cette année t'apportera du bonheur, de la paix et tout ce pour quoi tu t'investis autant.
+        </p>
+
+        <div class="memory">
+            2026 — A small coded message made just for you.
+        </div>
+
+        <br/>
+
+        <p>Joyeux Anniversaire ❤️</p>
+        <p>— Quelqu'un qui tient à toi,</p>
+        <p>Thomal</p>
+
+    </div>
+
+</div>
+
+<script>
+
+    const text = `
+> birthday.exe
+
+Initialisation...
+
+Chargement des souvenirs...
+Chargement de l’amitié...
+Chargement des émotions...
+
+Terminé.
+
+Un message spécial t’attend.
+`;
+
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("terminal").innerHTML =
+                text.substring(0, i) + '<span class="cursor">|</span>';
+
+            i++;
+            setTimeout(typeWriter, 35);
+        } else {
+            document.getElementById("terminal").innerHTML = text;
+            document.getElementById("openBtn").style.display = "block";
+        }
+    }
+
+    typeWriter();
+
+    document.getElementById("openBtn").addEventListener("click", () => {
+        const letter = document.getElementById("letter");
+        letter.style.display = "block";
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+</script>
+
+</body>
+</html>
