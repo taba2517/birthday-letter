@@ -13,7 +13,16 @@
         }
 
         body {
-            background: #0d1117;
+            background-image: linear-gradient(
+                    rgba(13, 17, 23, 0.75),
+                    rgba(13, 17, 23, 0.85)
+            ),
+            url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
             color: #58a6ff;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             min-height: 100vh;
@@ -21,7 +30,6 @@
             justify-content: center;
             align-items: center;
             padding: 16px;
-            -webkit-text-size-adjust: 100%;
         }
 
         /* MAIN CONTAINER */
@@ -68,12 +76,25 @@
         /* LETTER CARD */
         #letter {
             margin-top: 24px;
-            background: #161b22;
-            padding: 20px;
-            border-radius: 14px;
+
+            background: rgba(88, 166, 255, 0.08);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            padding: 24px;
+            border-radius: 20px;
+
             color: white;
             line-height: 1.7;
             font-size: 1rem;
+
+            border: 1px solid rgba(88, 166, 255, 0.25);
+
+            box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.4),
+                    0 0 20px rgba(88, 166, 255, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
         /* TITLE */
@@ -138,10 +159,34 @@
             color: #9ecbff;
             font-size: 0.95rem;
         }
+
+        .flowers {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            font-size: 2rem;
+
+            animation: floatFlowers 6s ease-in-out infinite;
+        }
+
+        @keyframes floatFlowers {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 
 <body>
+
+<div class="flowers">
+    🌺 🌸 🌼 🌺 🌸
+</div>
 
 <div class="container">
 
