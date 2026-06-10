@@ -92,6 +92,14 @@
             opacity: 0.9;
         }
 
+        .quote {
+            margin: 16px 0;
+            padding-left: 20px;
+            border-left: 3px solid #58a6ff;
+            color: #9ecbff;
+            line-height: 1.8;
+        }
+
         /* SMALL SCREENS TWEAK */
         @media (max-width: 480px) {
             #terminal {
@@ -101,6 +109,34 @@
             #letter {
                 padding: 16px;
             }
+        }
+
+        .counter-box {
+            margin-top: 24px;
+            background: #0d1117;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .counter-title {
+            color: #58a6ff;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .counter-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            line-height: 1.7;
+        }
+
+        .counter-subtitle {
+            margin-top: 12px;
+            color: #9ecbff;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -129,17 +165,40 @@
             Pour toutes nos conversations, nos fous rires, et tous ces moments qui rendent tout tellement mieux.
         </p>
 
+        <div class="quote">
+            <p>
+                Tu es bien plus qu'une simple meilleure amie pour moi.
+            </p>
+            <p>Tu es la personne avec qui j'aime partager mes journées,
+                celle qui me fait sourire sans même essayer,
+                et celle qui occupe une place très spéciale dans mon cœur.
+            </p>
+        </div>
+
         <p>
             Même avec la distance entre nous, tu comptes énormément pour moi.
         </p>
+
+        <div class="counter-box">
+
+            <div class="counter-title">
+                Depuis notre première conversation ❤️
+            </div>
+
+            <div id="relationshipCounter" class="counter-value">
+                Chargement...
+            </div>
+
+            <div class="counter-subtitle">
+                Depuis le 1er mars 2024, chaque jour passé à te connaître est devenu un souvenir précieux ❤️
+            </div>
+
+        </div>
 
         <p>
             J'espère que cette année t'apportera du bonheur, de la paix et tout ce pour quoi tu t'investis autant.
         </p>
 
-        <div class="memory">
-            2026 — A small coded message made just for you.
-        </div>
 
         <br/>
 
@@ -193,6 +252,30 @@ Un message spécial t’attend.
             block: "start"
         });
     });
+
+    const firstTalk = new Date("2024-03-01T00:00:00");
+
+    function updateCounter() {
+
+        const now = new Date();
+        const diff = now - firstTalk;
+
+        const totalSeconds = Math.floor(diff / 1000);
+
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor(totalSeconds / 60);
+
+        document.getElementById("relationshipCounter").innerHTML = `
+        ${days.toLocaleString()} jours<br>
+        ${hours.toLocaleString()} heures<br>
+        ${minutes.toLocaleString()} minutes<br>
+        ${totalSeconds.toLocaleString()} secondes
+    `;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
 
 </script>
 
