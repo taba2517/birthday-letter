@@ -1,4 +1,4 @@
-onst text = `
+const text = `
 > birthday.exe
 
 Initialisation...
