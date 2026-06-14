@@ -1,4 +1,4 @@
-const text = `
+onst text = `
 > birthday.exe
 
 Initialisation...
@@ -71,3 +71,41 @@ function updateCounter() {
 
 updateCounter();
 setInterval(updateCounter, 1000);
+
+const secretBtn = document.getElementById("secretBtn");
+const secretIntro = document.getElementById("secretIntro");
+const secretMessage = document.getElementById("secretMessage");
+
+secretBtn.addEventListener("click", () => {
+
+    secretBtn.style.display = "none";
+
+    secretIntro.classList.add("show");
+
+    setTimeout(() => {
+
+        secretIntro.classList.add("fade-out");
+
+    }, 3500);
+
+    setTimeout(() => {
+
+        secretIntro.style.display = "none";
+
+        secretMessage.style.display = "block";
+
+        const lines = secretMessage.querySelectorAll("p");
+
+        lines.forEach((line, index) => {
+
+            setTimeout(() => {
+
+                line.classList.add("show");
+
+            }, index * 1200);
+
+        });
+
+    }, 5000);
+
+});
